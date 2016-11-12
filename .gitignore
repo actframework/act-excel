@@ -9,3 +9,6 @@ dependency-reduced-pom.xml
 buildNumber.properties
 deploy
 .idea
+.classpath
+.project
+.settings/

@@ -1,6 +1,5 @@
 package act.view.excel;
 
-import act.app.App;
 import act.util.ActContext;
 import act.view.Template;
 import act.view.View;
@@ -17,9 +16,7 @@ public class ExcelView extends View {
 
     public static final String ID = "excel";
 
-    public static final Set<H.Format> SUPPORTED_FORMATS = C.setOf(
-            H.Format.XLS, H.Format.XLSX
-    );
+    public static final Set<H.Format> SUPPORTED_FORMATS = C.setOf(H.Format.XLS, H.Format.XLSX);
 
     @Override
     public String name() {
@@ -35,10 +32,6 @@ public class ExcelView extends View {
     protected Template loadTemplate(String resourcePath, ActContext context) {
         URL url = ExcelView.class.getResource(S.fmt("/%s%s", ID, resourcePath));
         return null == url ? null : new ExcelTemplate(url);
-    }
-
-    @Override
-    protected void init(App app) {
     }
 
     public List<String> loadContent(String template) {

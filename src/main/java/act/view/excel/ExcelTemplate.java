@@ -1,8 +1,6 @@
 package act.view.excel;
 
 import act.app.ActionContext;
-import act.exception.ActException;
-import act.util.ActError;
 import act.view.TemplateBase;
 import org.jxls.common.Context;
 import org.jxls.util.JxlsHelper;
