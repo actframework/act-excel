@@ -1,7 +1,9 @@
 package act.view.excel;
 
+import act.app.App;
 import act.util.ActContext;
 import act.view.Template;
+import act.view.TemplatePathResolver;
 import act.view.View;
 import org.osgl.http.H;
 import org.osgl.util.C;
@@ -21,6 +23,11 @@ public class ExcelView extends View {
     @Override
     public String name() {
         return ID;
+    }
+
+    @Override
+    protected void init(App app) {
+        TemplatePathResolver.registerSupportedFormats(SUPPORTED_FORMATS);
     }
 
     @Override
