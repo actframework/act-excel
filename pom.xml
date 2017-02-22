@@ -18,6 +18,8 @@
 ********************************************
 *            version history
 ********************************************
+0.6.0
+ - update to act-0.6
 0.0.1
   - baseline version
 -->
@@ -29,7 +31,7 @@
   <groupId>org.actframework</groupId>
   <artifactId>act-excel</artifactId>
   <packaging>jar</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.6.0-SNAPSHOT</version>
 
   <name>ACT Excel</name>
   <description>Implement ActFramework View with JXLS library to generate Excel report</description>
@@ -39,6 +41,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <git.url>git@github.com:actframework/act-excel.git</git.url>
+    <act.version>0.6.0-SNAPSHOT</act.version>
   </properties>
 
   <parent>
@@ -106,7 +109,7 @@
     <dependency>
       <groupId>org.actframework</groupId>
       <artifactId>act</artifactId>
-      <version>0.3.0-SNAPSHOT</version>
+      <version>${act.version}</version>
       <scope>provided</scope>
     </dependency>
 
