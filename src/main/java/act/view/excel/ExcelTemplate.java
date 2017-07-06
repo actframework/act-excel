@@ -1,9 +1,13 @@
 package act.view.excel;
 
+import act.Act;
 import act.app.ActionContext;
 import act.view.TemplateBase;
 import org.jxls.common.Context;
+import org.jxls.expression.JexlExpressionEvaluator;
+import org.jxls.transform.Transformer;
 import org.jxls.util.JxlsHelper;
+import org.jxls.util.TransformerFactory;
 import org.osgl.$;
 import org.osgl.http.H;
 import org.osgl.mvc.result.ServerError;
@@ -49,7 +53,11 @@ class ExcelTemplate extends TemplateBase {
         Context context = new Context(renderArgs);
         InputStream is = IO.is(resource);
         try {
-            JxlsHelper.getInstance().processTemplate(is, response.outputStream(), context);
+            Transformer transformer = TransformerFactory.createTransformer(is, response.outputStream());
+            JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator)transformer.getTransformationConfig().getExpressionEvaluator();
+            JexlFunctionManager funcMgr = Act.getInstance(JexlFunctionManager.class);
+            evaluator.getJexlEngine().setFunctions(funcMgr.functions());
+            JxlsHelper.getInstance().processTemplate(context, transformer);
         } catch (IOException e) {
             throw new ServerError(e, "Error processing excel template: %s", resource.getPath());
         }
