@@ -38,7 +38,7 @@
   <groupId>org.actframework</groupId>
   <artifactId>act-excel</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.0</version>
+  <version>1.1.1-SNAPSHOT</version>
 
   <name>ACT Excel</name>
   <description>Implement ActFramework View with JXLS library to generate Excel report</description>
