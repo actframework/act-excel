@@ -1,5 +1,25 @@
 package act.view.excel;
 
+/*-
+ * #%L
+ * ACT Excel
+ * %%
+ * Copyright (C) 2015 - 2017 ActFramework
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+
 import act.app.App;
 import act.app.event.AppEventId;
 import act.event.AppEventListenerBase;
@@ -7,6 +27,7 @@ import act.util.ActContext;
 import act.view.Template;
 import act.view.TemplatePathResolver;
 import act.view.View;
+import org.osgl.bootstrap.Version;
 import org.osgl.http.H;
 import org.osgl.util.C;
 import org.osgl.util.E;
@@ -18,6 +39,8 @@ import java.util.List;
 import java.util.Set;
 
 public class ExcelView extends View {
+
+    public static final Version VERSION = Version.of(ExcelView.class);
 
     public static final String ID = "excel";
 
