@@ -68,9 +68,14 @@ public class ExcelView extends View {
     }
 
     @Override
-    protected Template loadTemplate(String resourcePath, ActContext context) {
+    protected Template loadTemplate(String resourcePath) {
         URL url = ExcelView.class.getResource(S.fmt("/%s%s", ID, resourcePath));
         return null == url ? null : new ExcelTemplate(url);
+    }
+
+    @Override
+    protected Template loadInlineTemplate(String content) {
+        throw E.unsupport("Excel view does not support inline template");
     }
 
     public List<String> loadContent(String template) {

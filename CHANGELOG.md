@@ -1,5 +1,8 @@
 # act-excel CHANGE LOG
 
+1.3.0
+* Catch up to act-1.6
+
 1.2.0
 * Add util methods to support quick read simple excel file - through osgl-excel-reader dependency #4 
 * update jxls and jxls-poi version
