@@ -27,11 +27,11 @@ import act.util.ActContext;
 import act.view.Template;
 import act.view.TemplatePathResolver;
 import act.view.View;
-import org.osgl.bootstrap.Version;
 import org.osgl.http.H;
 import org.osgl.util.C;
 import org.osgl.util.E;
 import org.osgl.util.S;
+import osgl.version.Version;
 
 import java.net.URL;
 import java.util.EventObject;
