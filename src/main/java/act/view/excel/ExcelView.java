@@ -21,8 +21,8 @@ package act.view.excel;
  */
 
 import act.app.App;
-import act.app.event.AppEventId;
-import act.event.AppEventListenerBase;
+import act.app.event.SysEventId;
+import act.event.SysEventListenerBase;
 import act.util.ActContext;
 import act.view.Template;
 import act.view.TemplatePathResolver;
@@ -32,12 +32,14 @@ import org.osgl.util.C;
 import org.osgl.util.E;
 import org.osgl.util.S;
 import osgl.version.Version;
+import osgl.version.Versioned;
 
 import java.net.URL;
 import java.util.EventObject;
 import java.util.List;
 import java.util.Set;
 
+@Versioned
 public class ExcelView extends View {
 
     public static final Version VERSION = Version.of(ExcelView.class);
@@ -54,7 +56,7 @@ public class ExcelView extends View {
     @Override
     protected void init(final App app) {
         TemplatePathResolver.registerSupportedFormats(SUPPORTED_FORMATS);
-        app.eventBus().bind(AppEventId.PRE_START, new AppEventListenerBase() {
+        app.eventBus().bind(SysEventId.PRE_START, new SysEventListenerBase() {
             @Override
             public void on(EventObject event) throws Exception {
                 app.getInstance(JexlFunctionLoader.class).load();
