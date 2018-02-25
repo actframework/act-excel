@@ -1,5 +1,9 @@
 # act-excel CHANGE LOG
 
+1.4.1
+* update osgl-excel-reader to 1.3.0
+* update to act-1.7.3
+
 1.4.0
 * Catch up to act-1.7
 
