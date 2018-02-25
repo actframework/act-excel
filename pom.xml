@@ -41,7 +41,7 @@
   <properties>
     <scm.url>git@github.com:actframework/act-excel.git</scm.url>
 
-    <osgl-excel-reader.version>1.2.0</osgl-excel-reader.version>
+    <osgl-excel-reader.version>1.3.0</osgl-excel-reader.version>
     <jxls.version>2.4.3</jxls.version>
     <jxls-poi.version>1.0.14</jxls-poi.version>
   </properties>
