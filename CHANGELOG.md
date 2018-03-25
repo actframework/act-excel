@@ -1,5 +1,10 @@
 # act-excel CHANGE LOG
 
+1.4.2 - 25/Mar/2018
+* update act to 1.8.2
+* update osgl-excel-reader to 1.3.2
+* update jxls to 2.4.4
+
 1.4.1
 * update osgl-excel-reader to 1.3.0
 * update to act-1.7.3
