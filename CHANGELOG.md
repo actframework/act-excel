@@ -1,4 +1,9 @@
 # act-excel CHANGE LOG
+
+1.4.4 - 19/May/2018
+* update act to 1.8.8-RC5
+* update osgl-excel-reader to 1.3.4
+
 1.4.3 - 02/Apr/2018
 * update act to 1.8.5
 * update osgl-excel-reader to 1.3.3
