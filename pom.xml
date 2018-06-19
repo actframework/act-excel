@@ -20,7 +20,7 @@
 
   <artifactId>act-excel</artifactId>
   <packaging>jar</packaging>
-  <version>1.4.5</version>
+  <version>1.4.6-SNAPSHOT</version>
 
   <name>ACT Excel</name>
   <description>Implement ActFramework View with JXLS library to generate Excel report</description>
