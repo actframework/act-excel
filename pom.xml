@@ -35,15 +35,15 @@
   <parent>
     <groupId>org.actframework</groupId>
     <artifactId>parent</artifactId>
-    <version>1.8.8-RC5</version>
+    <version>1.8.8-RC10</version>
   </parent>
 
   <properties>
     <scm.url>git@github.com:actframework/act-excel.git</scm.url>
 
-    <osgl-excel-reader.version>1.3.4</osgl-excel-reader.version>
-    <jxls.version>2.4.4</jxls.version>
-    <jxls-poi.version>1.0.14</jxls-poi.version>
+    <osgl-excel-reader.version>1.4.0</osgl-excel-reader.version>
+    <jxls.version>2.4.5</jxls.version>
+    <jxls-poi.version>1.0.15</jxls-poi.version>
   </properties>
 
   <scm>
