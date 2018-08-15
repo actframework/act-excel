@@ -45,7 +45,7 @@ class ExcelTemplate extends TemplateBase {
     private URL resource;
 
     ExcelTemplate(URL url) {
-        this.resource = $.notNull(url);
+        this.resource = $.requireNotNull(url);
     }
 
     /**

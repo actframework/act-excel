@@ -1,5 +1,10 @@
 # act-excel CHANGE LOG
 
+1.5.0
+* update act to 1.8.8-RC12
+* update osgl-excel to 1.5.0
+* Use `PropertySpec` to filter direct output #5
+
 1.4.5 - 19/Jun/2018
 * update act to 1.8.8-RC10
 * update osgl-excel-reader to 1.4.0

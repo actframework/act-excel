@@ -24,20 +24,15 @@ import act.app.App;
 import act.app.event.SysEventId;
 import act.event.SysEventListenerBase;
 import act.util.ActContext;
-import act.view.Template;
-import act.view.TemplatePathResolver;
-import act.view.View;
+import act.view.*;
 import org.osgl.http.H;
-import org.osgl.util.C;
-import org.osgl.util.E;
-import org.osgl.util.S;
+import org.osgl.util.*;
+import org.osgl.xls.ExcelReader;
 import osgl.version.Version;
 import osgl.version.Versioned;
 
 import java.net.URL;
-import java.util.EventObject;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Versioned
 public class ExcelView extends View {
@@ -55,6 +50,7 @@ public class ExcelView extends View {
 
     @Override
     protected void init(final App app) {
+        ExcelReader.register();
         TemplatePathResolver.registerSupportedFormats(SUPPORTED_FORMATS);
         app.eventBus().bind(SysEventId.PRE_START, new SysEventListenerBase() {
             @Override
@@ -67,6 +63,15 @@ public class ExcelView extends View {
     @Override
     public boolean appliedTo(ActContext context) {
         return SUPPORTED_FORMATS.contains(context.accept());
+    }
+
+    @Override
+    public DirectRender directRenderFor(H.Format acceptType) {
+        MimeType mimeType = MimeType.findByContentType(acceptType.contentType());
+        if (mimeType.test(MimeType.Trait.excel)) {
+            return ExcelDirectRender.INSTANCE;
+        }
+        return null;
     }
 
     @Override
