@@ -1,6 +1,7 @@
 # act-excel CHANGE LOG
 
 1.5.0
+* `NullPointerException` encountered when no `PropertySpec` defined #6
 * update act to 1.8.8-RC12
 * update osgl-excel to 1.5.0
 * Use `PropertySpec` to filter direct output #5

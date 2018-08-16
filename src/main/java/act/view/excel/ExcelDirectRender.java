@@ -42,12 +42,17 @@ public class ExcelDirectRender implements DirectRender {
         ExcelWriter.Builder builder = ExcelWriter.builder()
                 .dateFormat(context.dateFormatPattern())
                 .filter(filter(context))
-                .headerMap(context.propertySpec().labelMapping())
+                .headerMap(headerMapping(context))
                 .headerTransformer(Keyword.Style.READABLE.asTransformer());
         if (mimeType.test(MimeType.Trait.xlsx)) {
             builder.asXlsx();
         }
         builder.build().write(result, context.resp().outputStream());
+    }
+
+    private Map<String, String> headerMapping(ActionContext context) {
+        PropertySpec.MetaInfo spec = context.propertySpec();
+        return null == spec ? C.<String, String>Map() : spec.labelMapping();
     }
 
     private String filter(ActionContext context) {
