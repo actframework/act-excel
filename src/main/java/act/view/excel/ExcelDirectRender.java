@@ -40,7 +40,7 @@ public class ExcelDirectRender implements DirectRender {
         H.Response resp = context.resp();
         resp.contentDisposition(context.attachmentName(), false);
         ExcelWriter.Builder builder = ExcelWriter.builder()
-                .dateFormat(context.dateFormatPattern())
+                .dateFormat(context.dateFormatPattern(true))
                 .filter(filter(context))
                 .headerMap(headerMapping(context))
                 .headerTransformer(Keyword.Style.READABLE.asTransformer());
