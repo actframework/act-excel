@@ -30,10 +30,9 @@ import org.jxls.util.JxlsHelper;
 import org.jxls.util.TransformerFactory;
 import org.osgl.$;
 import org.osgl.http.H;
-import org.osgl.mvc.result.ServerError;
+import org.osgl.mvc.result.InternalServerError;
 import org.osgl.util.E;
 import org.osgl.util.IO;
-import org.osgl.util.S;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,19 +58,14 @@ class ExcelTemplate extends TemplateBase {
         response.contentType(contentType);
 
         if(!response.containsHeader("content-disposition")) {
-            String name = context.paramVal("filename");
-            if (S.blank(name)) {
-                name = S.afterLast(context.actionPath(), ".");
-                name = S.fmt("%s.%s", name, format.name());
-            }
-            response.contentDisposition(name, false);
+            response.contentDisposition(context.attachmentName(), false);
         }
     }
 
     @Override
     protected void merge(Map<String, Object> renderArgs, H.Response response) {
         Context context = new Context(renderArgs);
-        InputStream is = IO.is(resource);
+        InputStream is = IO.inputStream(resource);
         try {
             Transformer transformer = TransformerFactory.createTransformer(is, response.outputStream());
             JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator)transformer.getTransformationConfig().getExpressionEvaluator();
@@ -79,7 +73,7 @@ class ExcelTemplate extends TemplateBase {
             evaluator.getJexlEngine().setFunctions(funcMgr.functions());
             JxlsHelper.getInstance().processTemplate(context, transformer);
         } catch (IOException e) {
-            throw new ServerError(e, "Error processing excel template: %s", resource.getPath());
+            throw new InternalServerError(e, "Error processing excel template: %s", resource.getPath());
         }
     }
 

@@ -1,6 +1,7 @@
 # act-excel CHANGE LOG
 
 1.5.0
+* fix attachment name issue - see https://github.com/actframework/actframework/issues/829
 * `NullPointerException` encountered when no `PropertySpec` defined #6
 * update act to 1.8.8-RC12
 * update osgl-excel to 1.5.0
