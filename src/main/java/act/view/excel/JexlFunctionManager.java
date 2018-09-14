@@ -20,7 +20,7 @@ package act.view.excel;
  * #L%
  */
 
-import act.util.DestroyableBase;
+import act.util.LogSupportedDestroyableBase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +30,7 @@ import javax.inject.Singleton;
  * Manage all {@link JexlFunc} Jexl functions
  */
 @Singleton
-public class JexlFunctionManager extends DestroyableBase {
+public class JexlFunctionManager extends LogSupportedDestroyableBase {
 
     private Map<String, Object> functions = new HashMap<>();
 

@@ -22,6 +22,7 @@ package act.view.excel;
 
 import act.Act;
 import act.app.ActionContext;
+import act.util.LogSupport;
 import act.util.PropertySpec;
 import act.view.DirectRender;
 import org.osgl.http.H;
@@ -30,7 +31,7 @@ import org.osgl.xls.ExcelWriter;
 
 import java.util.*;
 
-public class ExcelDirectRender implements DirectRender {
+public class ExcelDirectRender extends LogSupport implements DirectRender {
 
     public static final ExcelDirectRender INSTANCE = new ExcelDirectRender();
 
