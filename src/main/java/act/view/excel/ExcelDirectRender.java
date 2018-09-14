@@ -20,6 +20,7 @@ package act.view.excel;
  * #L%
  */
 
+import act.Act;
 import act.app.ActionContext;
 import act.util.PropertySpec;
 import act.view.DirectRender;
@@ -33,6 +34,8 @@ public class ExcelDirectRender implements DirectRender {
 
     public static final ExcelDirectRender INSTANCE = new ExcelDirectRender();
 
+    private volatile ExcelDataFormat.Manager excelDataFormatManager;
+
     @Override
     public void render(Object result, ActionContext context) {
         MimeType mimeType = MimeType.findByContentType(context.accept().contentType());
@@ -43,6 +46,7 @@ public class ExcelDirectRender implements DirectRender {
                 .dateFormat(context.dateFormatPattern(true))
                 .filter(filter(context))
                 .headerMap(headerMapping(context))
+                .fieldStylePatterns(excelDataFormatManager().fieldStyleLookup)
                 .headerTransformer(Keyword.Style.READABLE.asTransformer());
         if (mimeType.test(MimeType.Trait.xlsx)) {
             builder.asXlsx();
@@ -77,6 +81,17 @@ public class ExcelDirectRender implements DirectRender {
             return buf.toString();
         }
         return null;
+    }
+
+    private ExcelDataFormat.Manager excelDataFormatManager() {
+        if (null == excelDataFormatManager) {
+            synchronized (this) {
+                if (null == excelDataFormatManager) {
+                    excelDataFormatManager = Act.getInstance(ExcelDataFormat.Manager.class);
+                }
+            }
+        }
+        return excelDataFormatManager;
     }
 
 }
