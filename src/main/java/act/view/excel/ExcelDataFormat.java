@@ -53,7 +53,7 @@ public @interface ExcelDataFormat {
         @Override
         public AppByteCodeScanner createAppByteCodeScanner(final App app) {
             final Manager manager = new Manager();
-            app.jobManager().on(SysEventId.DEPENDENCY_INJECTOR_PROVISIONED, new Runnable() {
+            app.jobManager().on(SysEventId.DEPENDENCY_INJECTOR_PROVISIONED, "ExcelDataFormat:registerManagerSingleton", new Runnable() {
                 @Override
                 public void run() {
                     app.registerSingleton(manager);
