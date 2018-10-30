@@ -1,11 +1,11 @@
 # act-excel CHANGE LOG
 
-1.5.0
+1.5.0 - 30/Oct/2018
+* update act to 1.8.8
+* update osgl-excel to 1.5.0
 * Direct output excel - allow app to specify format for fields #7
 * fix attachment name issue - see https://github.com/actframework/actframework/issues/829
 * `NullPointerException` encountered when no `PropertySpec` defined #6
-* update act to 1.8.8-RC12
-* update osgl-excel to 1.5.0
 * Use `PropertySpec` to filter direct output #5
 
 1.4.5 - 19/Jun/2018
