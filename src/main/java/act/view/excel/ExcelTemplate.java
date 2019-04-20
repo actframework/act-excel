@@ -23,6 +23,7 @@ package act.view.excel;
 import act.Act;
 import act.app.ActionContext;
 import act.view.TemplateBase;
+import org.apache.commons.jexl3.JexlBuilder;
 import org.jxls.common.Context;
 import org.jxls.expression.JexlExpressionEvaluator;
 import org.jxls.transform.Transformer;
@@ -70,7 +71,8 @@ class ExcelTemplate extends TemplateBase {
             Transformer transformer = TransformerFactory.createTransformer(is, response.outputStream());
             JexlExpressionEvaluator evaluator = (JexlExpressionEvaluator)transformer.getTransformationConfig().getExpressionEvaluator();
             JexlFunctionManager funcMgr = Act.getInstance(JexlFunctionManager.class);
-            evaluator.getJexlEngine().setFunctions(funcMgr.functions());
+            evaluator.setJexlEngine(new JexlBuilder().namespaces(funcMgr.functions()).create());
+            // obsolete: evaluator.getJexlEngine().setFunctions(funcMgr.functions());
             JxlsHelper.getInstance().processTemplate(context, transformer);
         } catch (IOException e) {
             throw new InternalServerError(e, "Error processing excel template: %s", resource.getPath());
