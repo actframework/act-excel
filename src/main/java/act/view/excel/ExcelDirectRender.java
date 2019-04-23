@@ -57,7 +57,7 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
 
     private Map<String, String> headerMapping(ActionContext context) {
         PropertySpec.MetaInfo spec = context.propertySpec();
-        return null == spec ? C.<String, String>Map() : spec.labelMapping();
+        return null == spec ? C.<String, String>Map() : spec.labelMapping(context);
     }
 
     private String filter(ActionContext context) {
