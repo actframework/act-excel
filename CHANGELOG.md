@@ -1,5 +1,9 @@
 # act-excel CHANGE LOG
 
+1.6.2 - 17/Jun/2019
+* update to act-1.8.23
+* Support `@Label` annotation #9 
+
 1.6.1 - 26/Apr/2019
 * update to act-1.8.21
 * Export column naming does not favor `PropertySpec.current` setting #8
