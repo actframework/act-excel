@@ -28,6 +28,7 @@ import act.view.*;
 import org.osgl.http.H;
 import org.osgl.util.*;
 import org.osgl.xls.ExcelReader;
+import org.osgl.xls.SheetStyleManager;
 import osgl.version.Version;
 import osgl.version.Versioned;
 
@@ -56,6 +57,7 @@ public class ExcelView extends View {
             @Override
             public void on(EventObject event) throws Exception {
                 app.getInstance(JexlFunctionLoader.class).load();
+                app.registerSingleton(SheetStyleManager.SINGLETON);
             }
         });
     }
