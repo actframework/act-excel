@@ -1,6 +1,7 @@
 # act-excel CHANGE LOG
 
-1.7.0
+1.7.0 - 21/Jul/2019
+* update to act-1.8.26
 * update to osgl-excel 1.7.0
 
 1.6.2 - 17/Jun/2019
