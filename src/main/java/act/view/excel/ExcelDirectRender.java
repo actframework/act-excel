@@ -49,6 +49,7 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
         ExcelWriter.Builder builder = ExcelWriter.builder()
                 .dateFormat(context.dateFormatPattern(true))
                 .filter(filter(context))
+                .bigData()
                 .headerMap(headerMapping(result, context))
                 .fieldStylePatterns(excelDataFormatManager().fieldStyleLookup)
                 .headerTransformer(Keyword.Style.READABLE.asTransformer());

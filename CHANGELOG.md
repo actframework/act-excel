@@ -1,5 +1,10 @@
 # act-excel CHANGE LOG
 
+1.7.2 - 30/Sep/2019
+* update to act-1.8.28
+* update to osgl-excel-1.7.2
+* ExcelDirectRender - always use SXSSFWorkbook to write
+
 1.7.1 - 15/Sep/2019
 * update to act-1.8.27
 * update to osgl-excel 1.7.1

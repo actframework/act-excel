@@ -35,13 +35,13 @@
   <parent>
     <groupId>org.actframework</groupId>
     <artifactId>parent</artifactId>
-    <version>1.8.27</version>
+    <version>1.8.28</version>
   </parent>
 
   <properties>
     <scm.url>git@github.com:actframework/act-excel.git</scm.url>
 
-    <osgl-excel.version>1.7.1</osgl-excel.version>
+    <osgl-excel.version>1.7.2</osgl-excel.version>
     <jxls.version>2.6.0</jxls.version>
     <jxls-poi.version>2.6.0-rc1</jxls-poi.version>
   </properties>
