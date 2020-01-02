@@ -1,5 +1,9 @@
 # act-excel CHANGE LOG
 
+1.8.1 - 02/Jan/2019
+* update to act-1.8.31
+* update osgl-excel to 1.9.0
+
 1.8.0 - 03/Nov/2019
 * update to act-1.8.29
 * update to jxls-2.7.0
