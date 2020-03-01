@@ -1,5 +1,10 @@
 # act-excel CHANGE LOG
 
+1.9.0
+* add `ExcelDirectRender.generateExcelFile(Object data, File targetFile)` method
+* update to act-1.8.32
+* update to osgl-excel-1.10.0
+
 1.8.1 - 02/Jan/2020
 * update to act-1.8.31
 * update to osgl-excel-1.9.0

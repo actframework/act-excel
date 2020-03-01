@@ -24,6 +24,7 @@ import act.Act;
 import act.annotations.Label;
 import act.app.ActionContext;
 import act.util.LogSupport;
+import act.util.ProgressGauge;
 import act.util.PropertySpec;
 import act.view.DirectRender;
 import org.osgl.$;
@@ -31,6 +32,7 @@ import org.osgl.http.H;
 import org.osgl.util.*;
 import org.osgl.xls.ExcelWriter;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -43,7 +45,7 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
     @Override
     public void render(Object result, ActionContext context) {
         MimeType mimeType = MimeType.findByContentType(context.accept().contentType());
-        E.illegalStateIfNot(mimeType.test(MimeType.Trait.excel));
+        E.illegalStateIfNot(mimeType.hasTrait(MimeType.Trait.excel));
         H.Response resp = context.resp();
         resp.contentDisposition(context.attachmentName(), false);
         ExcelWriter.Builder builder = ExcelWriter.builder()
@@ -53,23 +55,35 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
                 .headerMap(headerMapping(result, context))
                 .fieldStylePatterns(excelDataFormatManager().fieldStyleLookup)
                 .headerTransformer(Keyword.Style.READABLE.asTransformer());
-        if (mimeType.test(MimeType.Trait.xlsx)) {
+        if (mimeType.hasTrait(MimeType.Trait.xlsx)) {
             builder.asXlsx();
         }
         builder.build().write(result, context.resp().outputStream());
     }
 
-    private Map<String, String> headerMapping(Object result, ActionContext context) {
+    public static void generateExcelFile(Object result, File excelFile) {
+        ExcelWriter.Builder builder = ExcelWriter.builder()
+                .dateFormat(Act.appConfig().datePattern())
+                .bigData()
+                .headerMap(headerMapping(result, null))
+                .fieldStylePatterns(Act.getInstance(ExcelDataFormat.Manager.class).fieldStyleLookup)
+                .headerTransformer(Keyword.Style.READABLE.asTransformer());
+        builder.build().write(result, excelFile);
+    }
+
+    private static Map<String, String> headerMapping(Object result, ActionContext context) {
         Map<String, String> mapping = new HashMap<>();
         exploreHeaderMapping(result, mapping);
-        PropertySpec.MetaInfo spec = context.propertySpec();
-        if (null != spec) {
-            mapping.putAll(spec.labelMapping(context));
+        if (null != context) {
+            PropertySpec.MetaInfo spec = context.propertySpec();
+            if (null != spec) {
+                mapping.putAll(spec.labelMapping(context));
+            }
         }
         return mapping;
     }
 
-    private void exploreHeaderMapping(Object result, Map<String, String> mapping) {
+    private static void exploreHeaderMapping(Object result, Map<String, String> mapping) {
         if (result instanceof Map) {
             exploreHeaderMapping((Map) result, mapping);
         } else if (result instanceof List) {
@@ -79,7 +93,7 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
         }
     }
 
-    private void exploreHeaderMapping(Map map, Map<String, String> mapping) {
+    private static void exploreHeaderMapping(Map map, Map<String, String> mapping) {
         for (Object o : map.values()) {
             if (o instanceof List) {
                 exploreHeaderMapping((List) o, mapping);
@@ -89,7 +103,7 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
         }
     }
 
-    private void exploreHeaderMapping(List list, Map<String, String> mapping) {
+    private static void exploreHeaderMapping(List list, Map<String, String> mapping) {
         for (Object o : list) {
             if (null != o) {
                 exploreHeaderMappingFromType(o.getClass(), mapping);
@@ -98,7 +112,7 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
         }
     }
 
-    private void exploreHeaderMappingFromType(Class type, Map<String, String> mapping) {
+    private static void exploreHeaderMappingFromType(Class type, Map<String, String> mapping) {
         List<Field> fields = $.fieldsOf(type);
         for (Field field : fields) {
             Label label = field.getAnnotation(Label.class);
@@ -108,7 +122,7 @@ public class ExcelDirectRender extends LogSupport implements DirectRender {
         }
     }
 
-    private String filter(ActionContext context) {
+    private static String filter(ActionContext context) {
         PropertySpec.MetaInfo spec = context.propertySpec();
         if (null == spec) {
             return null;
