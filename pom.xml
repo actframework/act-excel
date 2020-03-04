@@ -18,7 +18,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>act-excel</artifactId>
+  <artifactId>act-excel-java7</artifactId>
   <packaging>jar</packaging>
   <version>1.9.1-SNAPSHOT</version>
 
