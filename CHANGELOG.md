@@ -1,8 +1,14 @@
 # act-excel CHANGE LOG
 
-1.8.1 - 02/Jan/2019
+1.9.0
+* support excel themes
+* add `ExcelDirectRender.generateExcelFile(Object data, File targetFile)` method
+* update to act-1.8.32
+* update to osgl-excel-1.10.0
+
+1.8.1 - 02/Jan/2020
 * update to act-1.8.31
-* update osgl-excel to 1.9.0
+* update to osgl-excel-1.9.0
 
 1.8.0 - 03/Nov/2019
 * update to act-1.8.29
