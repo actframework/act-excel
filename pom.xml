@@ -68,7 +68,7 @@
 
     <dependency>
       <groupId>org.osgl</groupId>
-      <artifactId>osgl-excel</artifactId>
+      <artifactId>osgl-excel-java7</artifactId>
       <version>${osgl-excel.version}</version>
     </dependency>
 
