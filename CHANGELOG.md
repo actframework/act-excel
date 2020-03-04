@@ -1,6 +1,6 @@
 # act-excel CHANGE LOG
 
-1.9.0 - 04/Mar/2020
+1.9.1 - 04/Mar/2020
 * support excel themes
 * add `ExcelDirectRender.generateExcelFile(Object data, File targetFile)` method
 * update to act-1.8.32
