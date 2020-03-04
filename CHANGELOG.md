@@ -1,5 +1,8 @@
 # act-excel CHANGE LOG
 
+1.9.1 - 04/Mar/2020
+* rename artifact to act-excel-java7
+
 1.9.0 - 04/Mar/2020
 * support excel themes
 * add `ExcelDirectRender.generateExcelFile(Object data, File targetFile)` method
